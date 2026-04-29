@@ -1,0 +1,77 @@
+﻿<Window x:Class="Tablet_weaving_pattern_designer.ColorPickerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Color picker" 
+        Width="420" Height="320"
+        ResizeMode="NoResize"
+        Background="#FFFFFF">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Saturation slider -->
+        <Slider Grid.Row="0" Grid.Column="0"
+                Minimum="0" Maximum="1"
+                Value="{Binding Saturation, Mode=TwoWay}"
+                Orientation="Vertical"/>
+
+        <!-- Color area -->
+        <Border Grid.Row="0" Grid.Column="2" BorderBrush="{StaticResource BorderColor}" BorderThickness="1" CornerRadius="5">
+            <Grid Name="ColorArea" MouseDown="ColorArea_MouseDown" MouseMove="ColorArea_MouseMove">
+
+                <!-- Hue -->
+                <Rectangle RadiusX="5" RadiusY="5">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#FF0000" Offset="0.00"/>
+                            <GradientStop Color="#FFFF00" Offset="0.17"/>
+                            <GradientStop Color="#00FF00" Offset="0.33"/>
+                            <GradientStop Color="#00FFFF" Offset="0.50"/>
+                            <GradientStop Color="#0000FF" Offset="0.67"/>
+                            <GradientStop Color="#FF00FF" Offset="0.83"/>
+                            <GradientStop Color="#FF0000" Offset="1.00"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+
+                <!-- Value -->
+                <Rectangle RadiusX="5" RadiusY="5">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#00FFFFFF" Offset="0"/>
+                            <GradientStop Color="#FF000000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+        </Border>
+
+        <!-- Bottom panel -->
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Picked color -->
+            <Border Grid.Column="0"
+                    BorderBrush="{StaticResource BorderColor}" 
+                    BorderThickness="1"
+                    Background="{Binding SelectedColorBrush}"
+                    CornerRadius="5" Margin="0,0,10,0"/>
+
+            <!-- OK button -->
+            <Button Grid.Column="1" Content="OK" Style="{StaticResource Button}" Click="OkButton_Click"/>        
+        </Grid>
+    </Grid>
+</Window>

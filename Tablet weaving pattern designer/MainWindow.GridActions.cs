@@ -1,0 +1,139 @@
+﻿using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Shapes;
+
+namespace Tablet_weaving_pattern_designer
+{
+    public partial class MainWindow
+    {
+        /// <summary>
+        /// Changes threading direction to opposite for the clicked tablet column.
+        /// Updates the threading row and the full band visualization.
+        /// </summary>
+        private void Threading_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (sender is TextBlock textBlock)
+            {
+                UndoRedoManager.SaveState(Band.Clone());
+
+                int column = Grid.GetColumn(textBlock);
+                Band.Tablets[column].ChangeThreading();
+
+                GridRenderer.GenerateTextRow(Band, TabletDirectionRow, j => Band.Tablets[j].Threading == ThreadingDirection.S ? "S" : "Z", true, Threading_MouseLeftButtonDown);
+                GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
+            }
+        }
+
+        /// <summary>
+        /// Changes the color of a thread to the currently selected color.
+        /// Updates the band palette and the full band visualization.
+        /// </summary>
+        private void Square_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (sender is Rectangle square)
+            {
+                UndoRedoManager.SaveState(Band.Clone());
+
+                ColorManager.RemoveUsedColor(((SolidColorBrush)square.Fill).Color);
+                ColorManager.AddUsedColor(CurrentColor);
+
+                square.Fill = new SolidColorBrush(CurrentColor);
+
+                int row = Grid.GetRow(square);
+                int column = Grid.GetColumn(square);
+
+                Band.Tablets[column].ChangeThreadColor(row, CurrentColor);
+
+                GridRenderer.GenerateGrid(Band, ColorPickingGrid, (band, grid, count) => GridRenderer.AddSquares(band, grid, count, 0, GridHoleLabeling, Square_MouseLeftButtonDown, Square_MouseRightButtonDown), Band.ThreadCount);
+                GridRenderer.GenerateBandPalette(BandPaletteGrid, ColorManager, FindResource, ColorPaletteSlot_LeftClick, ColorPaletteSlot_RightClick);
+                GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
+            }
+        }
+
+        /// <summary>
+        /// Resets the color of a thread to white on right-click.
+        /// Updates the band palette and the full band visualization.
+        /// </summary>
+        private void Square_MouseRightButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (sender is Rectangle square)
+            {
+                UndoRedoManager.SaveState(Band.Clone());
+
+                ColorManager.RemoveUsedColor(((SolidColorBrush)square.Fill).Color);
+                ColorManager.AddUsedColor(Colors.White);
+
+                square.Fill = new SolidColorBrush(Colors.White);
+
+                int row = Grid.GetRow(square);
+                int column = Grid.GetColumn(square);
+
+                Band.Tablets[column].ChangeThreadColor(row, Colors.White);
+
+                GridRenderer.GenerateGrid(Band, ColorPickingGrid, (band, grid, count) => GridRenderer.AddSquares(band, grid, count, 0, GridHoleLabeling, Square_MouseLeftButtonDown, Square_MouseRightButtonDown), Band.ThreadCount);
+                GridRenderer.GenerateBandPalette(BandPaletteGrid, ColorManager, FindResource, ColorPaletteSlot_LeftClick, ColorPaletteSlot_RightClick);
+                GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling,Hexagon_MouseLeftButtonDown), Band.RowCount);
+            }
+        }
+
+        /// <summary>
+        /// Changes rotation direction to opposite for a clicked hexagon cell.
+        /// Updates the full band visualization.
+        /// </summary>
+        private void Hexagon_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (sender is Polygon hexagon)
+            {
+                UndoRedoManager.SaveState(Band.Clone());
+
+                int column = (int)hexagon.Tag; ;
+                int row = Grid.GetRow(hexagon);
+                if (Band.Tablets[column].Rotations[row] == RotationDirection.Forward)
+                {
+                    Band.Tablets[column].Rotations[row] = RotationDirection.Backward;
+                }
+                else
+                {
+                    Band.Tablets[column].Rotations[row] = RotationDirection.Forward;
+                }
+
+                GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
+            }
+        }
+
+        // ───────────────────────────────────────────────
+        // Scroll synchronization
+        // ───────────────────────────────────────────────
+
+        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void BandScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            if (e.VerticalChange != 0)
+            {
+                SyncVerticalScroll(e.VerticalOffset);
+            }
+
+            if (e.HorizontalChange != 0)
+            {
+                SyncHorizontalScroll(e.HorizontalOffset);
+            }
+        }
+
+        private void SyncVerticalScroll(double offset)
+        {
+            RowNumberScroll.ScrollToVerticalOffset(offset);
+        }
+
+        private void SyncHorizontalScroll(double offset)
+        {
+            TabletDirectionScroll.ScrollToHorizontalOffset(offset);
+            ColorPickingGridScroll.ScrollToHorizontalOffset(offset);
+            TabletNumberRowScroll.ScrollToHorizontalOffset(offset);
+        }
+    }
+}

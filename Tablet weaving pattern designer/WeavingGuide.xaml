@@ -1,0 +1,114 @@
+﻿<Window x:Class="Tablet_weaving_pattern_designer.WeavingGuide"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tablet_weaving_pattern_designer"
+        mc:Ignorable="d"
+        Title="Weaving Guide"
+        Height="600" Width="650"
+        Background="{StaticResource BackgroundColor}"
+        KeyDown="Window_KeyDown"
+        Closing="Window_Closing">
+
+    <!-- Main layout -->
+    <Grid x:Name="MainGrid" Margin="12" Focusable="True" MouseDown="EmptySpace_MouseDown">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Style="{StaticResource Card}">
+            <ScrollViewer x:Name="GuideScrollViewer" 
+                          Margin="0"
+                          PanningMode="None"
+                          VerticalScrollBarVisibility="Disabled" 
+                          HorizontalScrollBarVisibility="Auto"> 
+                <ScrollViewer.Template>
+                    <ControlTemplate TargetType="ScrollViewer">
+                        <Grid>
+                            <ScrollContentPresenter/>
+
+                            <ScrollBar x:Name="PART_HorizontalScrollBar"
+                                       Style="{StaticResource ScrollBar}"
+                                       Orientation="Horizontal"
+                                       VerticalAlignment="Bottom"
+                                       Maximum="{TemplateBinding ScrollableWidth}"
+                                       ViewportSize="{TemplateBinding ViewportWidth}"
+                                       Value="{TemplateBinding HorizontalOffset}"
+                                       Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </ScrollViewer.Template>
+
+                <Grid x:Name="PatternVisualization" Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Name="TabletNumberRow" Grid.Row="0"/>
+
+                    <Grid Name="TurningRow" Grid.Row="1" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Hole labels and colors on top" Grid.Row="2" FontWeight="Normal" Margin="0,0,0,10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <Grid Name="ColorsOnTop" Grid.Row="3" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Last rows of the band" Grid.Row="4" FontWeight="Normal" Margin="0,0,0,10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <Grid Name="BandPreview" Grid.Row="5"/>
+                </Grid>
+            </ScrollViewer>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Style="{StaticResource Card}">
+                <StackPanel>
+                    <!-- Repeat -->
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Repeat" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="RepeatComboBox" Grid.Column="1" Style="{StaticResource ComboBox}" SelectionChanged="RepeatComboBox_SelectionChanged"/>
+                    </Grid>
+
+                    <!-- Go to row -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Rows completed" VerticalAlignment="Center"/>
+                        <TextBox x:Name="RowsCompletedTextBox" Grid.Column="1" FontSize="14" Style="{StaticResource TextBox}" KeyDown="TextBox_KeyDown" LostKeyboardFocus="RowsCompletedTextBox_LostKeyboardFocus"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="1" Margin="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Row="0" Margin="0,0,0,5" Content="Previous" Style="{StaticResource Button}" Background="White" Click="Previous_Click"/>
+
+                    <Button Grid.Row="1" Margin="0,5,0,0" Content="Next" Style="{StaticResource Button}" Background="White" Click="Next_Click"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
