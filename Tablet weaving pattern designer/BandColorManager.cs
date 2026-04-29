@@ -162,7 +162,7 @@ namespace Tablet_weaving_pattern_designer
         /// </summary>
         public void ShuffleBandColors(TabletBand band)
         {
-            if (band.TabletCount == 0 || band.RowCount == 0)
+            if (band.TabletCount == 0 || band.RowCount == 0 || ColorUsage.Count < 2)
             {
                 return;
             }

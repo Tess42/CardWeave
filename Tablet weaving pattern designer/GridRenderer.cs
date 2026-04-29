@@ -292,7 +292,7 @@ namespace Tablet_weaving_pattern_designer
                         var label = CreateHoleLabel(threadIndex, fillColor);
 
                         Grid.SetRow(label, row);
-                        Grid.SetColumn(label, tabletIndex);
+                        Grid.SetColumn(label, columnIndex);
                         grid.Children.Add(label);
                     }
 
