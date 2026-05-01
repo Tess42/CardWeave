@@ -355,6 +355,23 @@ namespace CardWeave
             return matrix;
         }
 
+        // ───────────────────────────────────────────────
+        // Toolbar – Help
+        // ───────────────────────────────────────────────
+
+        /// <summary>
+        /// Opens the Help window with user guide and documentation.
+        /// </summary>
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            var helpWindow = new HelpWindow
+            {
+                Owner = this
+            };
+
+            helpWindow.ShowDialog();
+        }
+
         /// <summary>
         /// Opens the weaving guide window if the band contains at least one tablet and one row.
         /// </summary>

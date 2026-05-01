@@ -12,7 +12,7 @@
         Closing="Window_Closing">
 
     <!-- Main layout -->
-    <Grid x:Name="MainGrid" Margin="12"  Focusable="True" MouseDown="EmptySpace_MouseDown">
+    <Grid x:Name="MainGrid" Margin="12" Focusable="True" MouseDown="EmptySpace_MouseDown">
 
         <Grid.RowDefinitions>
             <!-- Toolbar -->
@@ -116,7 +116,7 @@
                 <Button Content="Weaving guide" Style="{StaticResource ToolbarButtonStyle}" Click="StartGuide_Click"/>
 
                 <!-- Help -->
-                <Button Content="Help" Style="{StaticResource ToolbarButtonStyle}"/>
+                <Button Content="Help" Style="{StaticResource ToolbarButtonStyle}" Click="Help_Click"/>
 
             </StackPanel>
         </Border>
@@ -326,7 +326,6 @@
                                                Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/>
                                 </Grid>
                             </ControlTemplate>
-
                         </ScrollViewer.Template>
 
                         <Grid>
