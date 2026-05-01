@@ -1,4 +1,4 @@
-﻿namespace Tablet_weaving_pattern_designer
+﻿namespace CardWeave
 {
     /// <summary>
     /// Global limits for tablet weaving designer.

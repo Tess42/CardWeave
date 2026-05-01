@@ -2,15 +2,18 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
-    <RootNamespace>Tablet_weaving_pattern_designer</RootNamespace>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <RootNamespace>CardWeave</RootNamespace>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
 	<LangVersion>latest</LangVersion>
+	<PlatformTarget>AnyCPU</PlatformTarget>
+	<ApplicationIcon>Assets\logo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\logo.ico" />
     <None Remove="Patterns\Arrow.json" />
     <None Remove="Patterns\Diamond.json" />
     <None Remove="Patterns\Flames.json" />
@@ -33,6 +36,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\logo.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Styles.xaml" />
   </ItemGroup>
 

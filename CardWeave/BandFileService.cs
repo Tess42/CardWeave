@@ -6,7 +6,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Controls;
 
-namespace Tablet_weaving_pattern_designer
+namespace CardWeave
 {
     /// <summary>
     /// Provides file handling utilities for working with <see cref="TabletBand"/> patterns.

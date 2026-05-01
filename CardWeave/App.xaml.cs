@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace Tablet_weaving_pattern_designer
+namespace CardWeave
 {
     /// <summary>
     /// Interaction logic for App.xaml

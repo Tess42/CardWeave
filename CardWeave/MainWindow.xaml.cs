@@ -5,7 +5,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
-namespace Tablet_weaving_pattern_designer
+namespace CardWeave
 {
     /// <summary>
     /// Main window logic, global state and UI initialization.

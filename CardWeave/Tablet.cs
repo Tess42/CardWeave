@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace Tablet_weaving_pattern_designer
+namespace CardWeave
 {
     /// <summary>
     /// Represents a single weaving tablet.

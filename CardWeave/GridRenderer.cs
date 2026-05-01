@@ -5,7 +5,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace Tablet_weaving_pattern_designer
+namespace CardWeave
 {
     /// <summary>
     /// Provides helper methods for rendering tablet-weaving visual elements into WPF grids.

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Tablet_weaving_pattern_designer
+namespace CardWeave
 {
     public partial class SaveProgressDialog : Window
     {

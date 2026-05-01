@@ -1,7 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 using System.Windows.Media;
 
-namespace Tablet_weaving_pattern_designer
+namespace CardWeave
 {
     /// <summary>
     /// Represents a full band composed of multiple tablets.
