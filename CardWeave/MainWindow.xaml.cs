@@ -72,9 +72,13 @@ namespace CardWeave
             InitializeComponent();
             DataContext = this;
             Band = new TabletBand();
-            NumberOfHolesTextBox.Text = Band.ThreadCount.ToString();
+
+            NumberOfHolesComboBox.ItemsSource = Enumerable.Range(WeavingConstants.MinThreadCount, WeavingConstants.MaxThreadCount - WeavingConstants.MinThreadCount + 1);
+            
+            NumberOfHolesComboBox.SelectedItem = Band.ThreadCount;
             NumberOfTabletsTextBox.Text = Band.TabletCount.ToString();
             NumberOfRowsTextBox.Text = Band.RowCount.ToString();
+
             Dispatcher.InvokeAsync(() => ColorManager.ApplyColorsToSlots(ColorSlotsPanel));
             Dispatcher.InvokeAsync(() => LoadPresetsMenu());
         }
@@ -101,7 +105,7 @@ namespace CardWeave
             Band = newBand;
             BackSide = false;
 
-            NumberOfHolesTextBox.Text = Band.ThreadCount.ToString();
+            NumberOfHolesComboBox.SelectedItem = Band.ThreadCount;
             NumberOfTabletsTextBox.Text = Band.TabletCount.ToString();
             NumberOfRowsTextBox.Text = Band.RowCount.ToString();
 

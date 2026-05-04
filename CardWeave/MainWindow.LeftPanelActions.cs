@@ -11,22 +11,20 @@ namespace CardWeave
         // ───────────────────────────────────────────────
 
         /// <summary>
-        /// Sets new number of holes per tablet when the textbox loses focus.
-        /// Restores previous value if input is invalid.
+        /// Sets new number of holes per tablet when the new value from the combo box is selected.
         /// </summary>
-        private void NumberOfHolesTextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        private void NumberOfHolesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (int.TryParse(NumberOfHolesTextBox.Text, out int value) && value != Band.ThreadCount && value >= WeavingConstants.MinThreadCount && value <= WeavingConstants.MaxThreadCount)
+            if (NumberOfHolesComboBox.SelectedItem is int value)
             {
-                UndoRedoManager.SaveState(Band.Clone());
+                if (value != Band.ThreadCount)
+                {
+                    UndoRedoManager.SaveState(Band.Clone());
 
-                Band.ChangeThreadCount(value);
-                ColorManager.RebuildColorUsage(Band);
-                RedrawVisualization();
-            }
-            else
-            {
-                NumberOfHolesTextBox.Text = Band.ThreadCount.ToString();
+                    Band.ChangeThreadCount(value);
+                    ColorManager.RebuildColorUsage(Band);
+                    RedrawVisualization();
+                }
             }
         }
 

@@ -208,7 +208,7 @@
                                           IsHitTestVisible="False"/>
 
                         <Popup x:Name="Popup"
-                               Placement="Top"
+                               Placement="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}"
                                Width="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
                                IsOpen="{TemplateBinding IsDropDownOpen}"
                                AllowsTransparency="True"

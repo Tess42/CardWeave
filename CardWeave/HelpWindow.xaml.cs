@@ -52,8 +52,8 @@ Load some pattern from Presets.
 • Thread: The yarn going through each hole
 • Hole: A position in the tablet (labeled A, B, C, D...)
 • Turning (rotation): Direction a tablet turns (Forward/Backward)
-• Threading: Direction threads go through the hole (S or Z)
-";
+• Threading: Direction threads go through the hole (S or Z)"
+;
 
             helpContent["band_settings"] = 
 @"The 'Band Settings' panel controls the basic dimensions of your pattern.
@@ -61,7 +61,7 @@ Load some pattern from Presets.
 **Number of holes**:
 The number of thread holes in each tablet. Standard tablets have 4 holes.
 • Minimum: 2
-• Maximum: 10
+• Maximum: 8
 
 **Number of tablets**:
 How many cards are in your band. More tablets = wider band.
@@ -73,8 +73,8 @@ How many rows your pattern will have. This defines the pattern length.
 • Minimum: 1
 • Maximum: 500
 
-**Tip**: Start with 4 holes, 5-10 tablets, and 20 rows to learn the basics.
-";
+**Tip**: Start with 4 holes, 5-10 tablets, and 20 rows to learn the basics."
+;
 
             helpContent["modifying_tablets"] = 
 @"The 'Modify Tablets' panel allows you to add or remove tablets from your band.
@@ -93,8 +93,8 @@ How many rows your pattern will have. This defines the pattern length.
 
 **Constraints**:
 • You cannot insert beyond the current tablet count + 1
-• You cannot remove if the band has no tablets
-";
+• You cannot remove if the band has no tablets"
+;
 
             helpContent["colors"] =
 @"**Currently picked color**:
@@ -119,8 +119,8 @@ The color displayed in the 'Currently picked color' box is the color you'll appl
 **Color operations**:
 • Colors > Set all to currently picked color: Fill entire band with one color
 • Colors > Shuffle band colors: Randomly permute colors
-• Colors > Set band background: Change the grid background color
-";
+• Colors > Set band background: Change the grid background color"
+;
 
             helpContent["threading"] =
 @"Threading direction (S or Z) determines how threads pass through tablet holes. S direction tilts the thred to the left, Z direction to the right.
@@ -133,8 +133,8 @@ The color displayed in the 'Currently picked color' box is the color you'll appl
 • Threading > Set all to S-threading: All tablets use S threading
 • Threading > Set all to Z-threading: All tablets use Z threading
 • Threading > Halved threading: First half S, second half Z
-• Threading > Alternate S and Z threading: S, Z, S, Z...
-";
+• Threading > Alternate S and Z threading: S, Z, S, Z..."
+;
 
             helpContent["turning"] =
 @"Turning (rotation) is the direction each tablet rotates per row. Forward rotation preserves the thread tilt, while backward rotation reverses it.
@@ -148,8 +148,8 @@ The color displayed in the 'Currently picked color' box is the color you'll appl
 • Turning > Set all to backward: All tablets rotate backward
 • Turning > Alternate forward/backward: 1F, 1B, 1F, 1B...
 • Turning > 2 forward / 2 backward: 2F, 2B, 2F, 2B...
-• Turning > 4 forward / 4 backward: 4F, 4B, 4F, 4B...
-";
+• Turning > 4 forward / 4 backward: 4F, 4B, 4F, 4B..."
+;
 
             helpContent["visualization"] =
 @"The View menu controls what information is displayed on your pattern.
@@ -171,8 +171,8 @@ The color displayed in the 'Currently picked color' box is the color you'll appl
 
 **View > Show/hide hole labels in grid**:
 • Show/hide small letters in each cell showing which hole position it represents.
-• Helpful when understanding thread paths.
-";
+• Helpful when understanding thread paths."
+;
 
             helpContent["file_operations"] =
 @"**File > Save**:
@@ -202,8 +202,8 @@ The color displayed in the 'Currently picked color' box is the color you'll appl
 
 **Edit**:
 • To revert changes: Edit > Undo (Ctrl+Z)
-• To repeat actions: Edit > Redo (Ctrl+Y)
-";
+• To repeat actions: Edit > Redo (Ctrl+Y)"
+;
 
             helpContent["weaving_guide"] =
 @"The Weaving Guide helps you weave your pattern step-by-step.
@@ -228,8 +228,8 @@ The color displayed in the 'Currently picked color' box is the color you'll appl
 3. View the current row's instructions per tablet (F - Forward, B - Backward)
 4. Turn each tablet according to the directions shown
 5. Click next to advance to the next row
-6. Use the guide as visual reference while physically weaving
-";
+6. Use the guide as visual reference while physically weaving"
+;
 
             helpContent["shortcuts"] =
 @"**General**:
@@ -252,8 +252,8 @@ The color displayed in the 'Currently picked color' box is the color you'll appl
 • Right-click: Apply white color to this thread
 
 **Hexagon**:
-• Left-click: Reverse rotation direction
-";
+• Left-click: Reverse rotation direction"
+;
         }
 
         private void SetFormattedText(string text)

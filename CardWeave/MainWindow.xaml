@@ -143,7 +143,7 @@
                             <ColumnDefinition Width="50"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Number of holes" VerticalAlignment="Center"/>
-                        <TextBox x:Name="NumberOfHolesTextBox" Grid.Column="1" FontSize="14" Style="{StaticResource TextBox}" KeyDown="TextBox_KeyDown" LostKeyboardFocus="NumberOfHolesTextBox_LostKeyboardFocus"/>
+                        <ComboBox x:Name="NumberOfHolesComboBox" Grid.Column="1" Style="{StaticResource ComboBox}" Tag="Bottom" SelectionChanged="NumberOfHolesComboBox_SelectionChanged"/>
                     </Grid>
 
                     <!-- Number of tablets -->
