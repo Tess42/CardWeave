@@ -4,11 +4,20 @@ using System.Windows.Documents;
 
 namespace CardWeave
 {
+    /// <summary>
+    /// Window displaying help topics and their corresponding texts.
+    /// </summary>
     public partial class HelpWindow : Window
     {
+        /// <summary> Dictionary mapping topic titles to text content. </summary>
         private readonly Dictionary<string, string> helpContent = new();
+
+        /// <summary> Currently selected topic button (highlighted in bold). </summary>
         private Button? currentSelectedButton = null;
 
+        /// <summary>
+        /// Initializes the help window, loads text content and selects the default topic.
+        /// </summary>
         public HelpWindow()
         {
             InitializeComponent();
@@ -16,13 +25,18 @@ namespace CardWeave
             Loaded += (s, e) => LoadDefaultTopic();
         }
 
+        /// <summary>
+        /// Selects and displays the first topic button when the window loads.
+        /// </summary>
         private void LoadDefaultTopic()
         {
             var stackPanel = (this.Content as Grid)?.Children[0] as Border;
+
             if (stackPanel?.Child is ScrollViewer scrollViewer)
             {
                 var stack = scrollViewer.Content as StackPanel;
                 var firstButton = stack?.Children.OfType<Button>().FirstOrDefault();
+
                 if (firstButton != null)
                 {
                     Topic_Click(firstButton, new RoutedEventArgs());
@@ -30,6 +44,9 @@ namespace CardWeave
             }
         }
 
+        /// <summary>
+        /// Initializes all help topics and their associated text content.
+        /// </summary>
         private void InitializeHelpContent()
         {
             helpContent["getting_started"] =
@@ -256,6 +273,9 @@ The color displayed in the 'Currently picked color' box is the color you'll appl
 ;
         }
 
+        /// <summary>
+        /// Formats text by converting marked parts (**text**) into bold.
+        /// </summary>
         private void SetFormattedText(string text)
         {
             ContentTextBlock.Inlines.Clear();
@@ -275,6 +295,9 @@ The color displayed in the 'Currently picked color' box is the color you'll appl
             }
         }
 
+        /// <summary>
+        /// Handles topic button clicks, loads corresponding text and updates button highlighting.
+        /// </summary>
         private void Topic_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button)

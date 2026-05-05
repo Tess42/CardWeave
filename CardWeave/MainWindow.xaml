@@ -294,8 +294,7 @@
                 <Grid Grid.Row="4" HorizontalAlignment="Center" Margin="0,10,0,0">
                     <ScrollViewer x:Name="BandScrollViewer" 
                                   Margin="30,0,30,20" 
-                                  PanningMode="None" 
-                                  PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" 
+                                  PanningMode="None"
                                   VerticalScrollBarVisibility="Auto" 
                                   HorizontalScrollBarVisibility="Auto"
                                   ScrollChanged="BandScrollViewer_ScrollChanged">
@@ -334,8 +333,7 @@
 
                     <ScrollViewer x:Name="RowNumberScroll" 
                                   Margin="0,0,0,20" 
-                                  PanningMode="None" 
-                                  PreviewMouseWheel="ScrollViewer_PreviewMouseWheel"
+                                  PanningMode="None"
                                   VerticalScrollBarVisibility="Hidden"
                                   HorizontalScrollBarVisibility="Disabled"
                                   IsHitTestVisible="False">

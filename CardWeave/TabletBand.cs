@@ -102,14 +102,9 @@ namespace CardWeave
             }
         }
 
-        public void ChangePatternRepeat(int value)
-        {
-            if (value > 0 && value <= RowCount)
-            {
-                PatternRepeat = value;
-            }
-        }
-
+        /// <summary>
+        /// Updates the number of completed rows if the value is non‑negative.
+        /// </summary>
         public void ChangeRowsCompleted(int value)
         {
             if (value >= 0)
@@ -140,6 +135,9 @@ namespace CardWeave
             }
         }
 
+        /// <summary>
+        /// Reverses turning direction (F ↔ B) for all tablets in the band.
+        /// </summary>
         public void ReverseAllTurning()
         {
             foreach (var tablet in Tablets)
@@ -148,6 +146,9 @@ namespace CardWeave
             }
         }
 
+        /// <summary>
+        /// Sets turning direction of all tablets to the specified rotation.
+        /// </summary>
         public void SetAllRotationTo(RotationDirection newRotation)
         {
             foreach (var tablet in Tablets)
@@ -156,6 +157,10 @@ namespace CardWeave
             }
         }
 
+        /// <summary>
+        /// Applies alternating forward/backward turning to all tablets,
+        /// using blocks of the specified size.
+        /// </summary>
         public void AlternateForwardBackward(int count)
         {
             foreach (var tablet in Tablets)
@@ -164,6 +169,9 @@ namespace CardWeave
             }
         }
 
+        /// <summary>
+        /// Reverses threading direction (S ↔ Z) for all tablets.
+        /// </summary>
         public void ReverseAllThreading()
         {
             foreach (var tablet in Tablets)
@@ -172,6 +180,9 @@ namespace CardWeave
             }
         }
 
+        /// <summary>
+        /// Sets threading direction of all tablets to the specified value.
+        /// </summary>
         public void SetAllThreadingTo(ThreadingDirection newThreading)
         {
             foreach (var tablet in Tablets)
@@ -180,6 +191,9 @@ namespace CardWeave
             }
         }
 
+        /// <summary>
+        /// Applies halved threading: first half S-threading, second half Z-threading.
+        /// </summary>
         public void SetHalvedThreading()
         {
             for (int i = 0; i < TabletCount; i++)
@@ -194,6 +208,9 @@ namespace CardWeave
             }
         }
 
+        /// <summary>
+        /// Applies alternating threading pattern: S, Z, S, Z, ...
+        /// </summary>
         public void AlternateSZThreading()
         {
             for (int i = 0; i < TabletCount; i++)
@@ -209,6 +226,9 @@ namespace CardWeave
             }
         }
 
+        /// <summary>
+        /// Replaces colors in all tablets according to the provided mapping dictionary.
+        /// </summary>
         public void ShuffleColors(Dictionary<Color, Color> colorDict)
         {
             foreach (var tablet in Tablets)

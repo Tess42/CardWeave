@@ -128,12 +128,20 @@ namespace CardWeave
         // Toolbar – Edit (Undo/Redo)
         // ───────────────────────────────────────────────
 
+        /// <summary>
+        /// Reverts the band to its previous state using the undo stack
+        /// and replaces the current band with the restored version.
+        /// </summary>
         private void Undo_Click(object? sender = null, RoutedEventArgs? e = null)
         {
             TabletBand band = UndoRedoManager.Undo(Band.Clone());
             ReplaceBand(band);
         }
 
+        /// <summary>
+        /// Restores the band to the next state in the redo stack
+        /// and updates the current band accordingly.
+        /// </summary>
         private void Redo_Click(object? sender = null, RoutedEventArgs? e = null)
         {
             TabletBand band = UndoRedoManager.Redo(Band.Clone());
@@ -145,7 +153,7 @@ namespace CardWeave
         // ───────────────────────────────────────────────
 
         /// <summary>
-        /// Changes a boolean visualization setting to opposite and redraws the pattern.
+        /// Switches visualization setting to opposite and redraws the pattern.
         /// </summary>
         private void ChancheVisibility(bool currentValue, Action<bool> setter)
         {
@@ -153,26 +161,41 @@ namespace CardWeave
             RedrawVisualization();
         }
 
+        /// <summary>
+        /// Switches between front and back side view of the band.
+        /// </summary>
         private void BandSide_Click(object sender, RoutedEventArgs e)
         {
             ChancheVisibility(BackSide, v => BackSide = v);
         }
 
+        /// <summary>
+        /// Shows or hides column (tablet) labeling above the pattern.
+        /// </summary>
         private void ColumnLabeling_Click(object sender, RoutedEventArgs e)
         {
             ChancheVisibility(ColumnLabeling, v => ColumnLabeling = v);
         }
 
+        /// <summary>
+        /// Shows or hides row labeling on the left side of the pattern.
+        /// </summary>
         private void RowLabeling_Click(object sender, RoutedEventArgs e)
         {
             ChancheVisibility(RowLabeling, v => RowLabeling = v);
         }
 
+        /// <summary>
+        /// Shows or hides the hole labeling (A, B, C, D) on the left.
+        /// </summary>
         private void HoleLabeling_Click(object sender, RoutedEventArgs e)
         {
             ChancheVisibility(HoleLabeling, v => HoleLabeling = v);
         }
 
+        /// <summary>
+        /// Shows or hides hole labels inside each grid cell.
+        /// </summary>
         private void GridHoleLabeling_Click(object sender, RoutedEventArgs e)
         {
             ChancheVisibility(GridHoleLabeling, v => GridHoleLabeling = v);
@@ -192,31 +215,49 @@ namespace CardWeave
         // Toolbar – Turning
         // ───────────────────────────────────────────────
 
+        /// <summary>
+        /// Reverses turning direction (F ↔ B) for all tablets in the band.
+        /// </summary>
         private void ReverseAllTurning_Click(object sender, RoutedEventArgs e)
         {
             ApplyBandChange(b => b.ReverseAllTurning());
         }
 
+        /// <summary>
+        /// Sets turning direction of all tablets to Forward.
+        /// </summary>
         private void SetAllToForward_Click(object sender, RoutedEventArgs e)
         {
             ApplyBandChange(b => b.SetAllRotationTo(RotationDirection.Forward));
         }
 
+        /// <summary>
+        /// Sets turning direction of all tablets to Backward.
+        /// </summary>
         private void SetAllToBackward_Click(object sender, RoutedEventArgs e)
         {
             ApplyBandChange(b => b.SetAllRotationTo(RotationDirection.Backward));
         }
 
+        /// <summary>
+        /// Applies alternating turning pattern: 1 row forward, 1 row backward.
+        /// </summary>
         private void AlternateForwardBackward_Click(object sender, RoutedEventArgs e)
         {
             ApplyBandChange(b => b.AlternateForwardBackward(1));
         }
 
+        /// <summary>
+        /// Applies alternating turning pattern: 2 rows forward, 2 rows backward.
+        /// </summary>
         private void Alternate2Forward2Backward_Click(object sender, RoutedEventArgs e)
         {
             ApplyBandChange(b => b.AlternateForwardBackward(2));
         }
 
+        /// <summary>
+        /// Applies alternating turning pattern: 4 rows forward, 4 rows backward.
+        /// </summary>
         private void Alternate4Forward4Backward_Click(object sender, RoutedEventArgs e)
         {
             ApplyBandChange(b => b.AlternateForwardBackward(4));
@@ -226,26 +267,41 @@ namespace CardWeave
         // Toolbar – Threading
         // ───────────────────────────────────────────────
 
+        /// <summary>
+        /// Reverses threading direction (S ↔ Z) for all tablets in the band.
+        /// </summary>
         private void ReverseAllThreading_Click(object sender, RoutedEventArgs e)
         {
             ApplyBandChange(b => b.ReverseAllThreading());
         }
 
+        /// <summary>
+        /// Sets threading direction of all tablets to S-threading.
+        /// </summary>
         private void SetAllThreadingToS_Click(object sender, RoutedEventArgs e)
         {
             ApplyBandChange(b => b.SetAllThreadingTo(ThreadingDirection.S));
         }
 
+        /// <summary>
+        /// Sets threading direction of all tablets to Z-threading.
+        /// </summary>
         private void SetAllThreadingToZ_Click(object sender, RoutedEventArgs e)
         {
             ApplyBandChange(b => b.SetAllThreadingTo(ThreadingDirection.Z));
         }
 
+        /// <summary>
+        /// Applies halved threading: first half S-threading, second half Z-threading.
+        /// </summary>
         private void SetHalvedThreading_Click(object sender, RoutedEventArgs e)
         {
             ApplyBandChange(b => b.SetHalvedThreading());
         }
 
+        /// <summary>
+        /// Applies alternating threading pattern: S, Z, S, Z, ...
+        /// </summary>
         private void AlternateSZThreading_Click(object sender, RoutedEventArgs e)
         {
             ApplyBandChange(b => b.AlternateSZThreading());
@@ -255,17 +311,26 @@ namespace CardWeave
         // Toolbar – Color
         // ───────────────────────────────────────────────
 
+        /// <summary>
+        /// Sets the band background color to the currently picked color.
+        /// </summary>
         private void BackgroundColor_Click(object sender, RoutedEventArgs e)
         {
             BandBackground = CurrentColor;
             RedrawVisualization();
         }
 
+        /// <summary>
+        /// Sets all thread colors in the band to the currently picked color.
+        /// </summary>
         private void AllToPickedColor_Click(object sender, RoutedEventArgs e)
         {
             ApplyBandChange(b => ColorManager.SetAllThreadsToColor(b, CurrentColor));
         }
 
+        /// <summary>
+        /// Randomly shuffles all colors used in the band.
+        /// </summary>
         public void ShuffleBandColors_Click(object sender, RoutedEventArgs e)
         {
             ApplyBandChange(b => ColorManager.ShuffleBandColors(b));

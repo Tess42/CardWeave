@@ -204,6 +204,9 @@ namespace CardWeave
             }
         }
 
+        /// <summary>
+        /// Raises the PropertyChanged event for UI updates.
+        /// </summary>
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {

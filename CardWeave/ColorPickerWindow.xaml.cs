@@ -5,13 +5,19 @@ using System.Windows.Media;
 
 namespace CardWeave
 {
+    /// <summary>
+    /// Window providing an HSV-based color picker for selecting custom colors.
+    /// </summary>
     public partial class ColorPickerWindow : Window, INotifyPropertyChanged
     {
+        /// <summary> Current hue. </summary>
         public double Hue { get; set; } = 1.0;
+
+        /// <summary> Current value. </summary>
         public double Value { get; set; } = 1.0;
 
+        /// <summary> Current saturation. </summary>
         private double _saturation = 1.0;
-
         public double Saturation
         {
             get => _saturation;
@@ -23,8 +29,10 @@ namespace CardWeave
             }
         }
 
+        /// <summary>
+        /// Brush representing the currently selected color (used for UI preview).
+        /// </summary>
         private Brush _selectedColorBrush = Brushes.White;
-
         public Brush SelectedColorBrush
         {
             get => _selectedColorBrush;
@@ -35,32 +43,38 @@ namespace CardWeave
             }
         }
 
+        /// <summary> The currently selected RGB color. </summary>
         public Color SelectedColor { get; private set; }
 
+        /// <summary>
+        /// Initializes the color picker window and sets up data binding.
+        /// </summary>
         public ColorPickerWindow()
         {
             InitializeComponent();
             DataContext = this;
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        private void OnPropertyChanged(string name)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
+        /// <summary>
+        /// Handles mouse click in the color area and picks a color at the clicked position.
+        /// </summary>
         private void ColorArea_MouseDown(object sender, MouseButtonEventArgs e)
         {
             PickColor(e.GetPosition(ColorArea));
         }
 
+        /// <summary>
+        /// Handles mouse drag in the color area to continuously update the selected color.
+        /// </summary>
         private void ColorArea_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 PickColor(e.GetPosition(ColorArea));
         }
 
+        /// <summary>
+        /// Converts a point inside the color area into HSV values and updates the color.
+        /// </summary>
         private void PickColor(Point p)
         {
             double w = ColorArea.ActualWidth;
@@ -72,12 +86,18 @@ namespace CardWeave
             UpdateColor();
         }
 
+        /// <summary>
+        /// Recalculates the selected color from HSV values and updates the preview brush.
+        /// </summary>
         private void UpdateColor()
         {
             SelectedColor = ColorFromHSV();
             SelectedColorBrush = new SolidColorBrush(SelectedColor);
         }
 
+        /// <summary>
+        /// Converts the current HSV values to an RGB color.
+        /// </summary>
         private Color ColorFromHSV()
         {
             double c = Value * Saturation;
@@ -106,10 +126,22 @@ namespace CardWeave
             );
         }
 
+        /// <summary>
+        /// Confirms the selected color and closes the window.
+        /// </summary>
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
             Close();
+        }
+
+        /// <summary>
+        /// Raises the PropertyChanged event for UI updates.
+        /// </summary>
+        public event PropertyChangedEventHandler? PropertyChanged;
+        private void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

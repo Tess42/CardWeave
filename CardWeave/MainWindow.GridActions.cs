@@ -1,5 +1,4 @@
 ﻿using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -106,11 +105,10 @@ namespace CardWeave
         // Scroll synchronization
         // ───────────────────────────────────────────────
 
-        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
-        {
-            e.Handled = true;
-        }
-
+        /// <summary>
+        /// Handles scroll changes in the band visualization grid and synchronizes
+        /// vertical and horizontal offsets of all related grids.
+        /// </summary>
         private void BandScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             if (e.VerticalChange != 0)
@@ -124,11 +122,18 @@ namespace CardWeave
             }
         }
 
+        /// <summary>
+        /// Synchronizes vertical scrolling of row number grid with given offset.
+        /// </summary>
         private void SyncVerticalScroll(double offset)
         {
             RowNumberScroll.ScrollToVerticalOffset(offset);
         }
 
+        /// <summary>
+        /// Synchronizes horizontal scrolling of tablet direction grid,
+        /// color picking grid and tablet number grid with given offset.
+        /// </summary>
         private void SyncHorizontalScroll(double offset)
         {
             TabletDirectionScroll.ScrollToHorizontalOffset(offset);

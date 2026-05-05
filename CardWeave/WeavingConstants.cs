@@ -1,7 +1,7 @@
 ﻿namespace CardWeave
 {
     /// <summary>
-    /// Global limits for tablet weaving designer.
+    /// Global limits for Card Weave.
     /// </summary>
     public static class WeavingConstants
     {
