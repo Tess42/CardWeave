@@ -50,7 +50,7 @@ namespace CardWeave
         private void InitializeHelpContent()
         {
             helpContent["getting_started"] =
-@"Card weaving is a historical textile technique that uses cards (tablets) with holes to create intricate patterns.
+@"Card (tablet) weaving is a historical textile technique that uses cards (tablets) with holes to create bands with intricate patterns.
 
 Card Weave helps you visualize and design card weaving patterns digitally.
 

@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Help" 
         Height="660" Width="1000"
+        MinHeight="500" MinWidth="500"
         Background="{StaticResource BackgroundColor}"
         WindowStartupLocation="CenterOwner">
 
@@ -71,7 +72,7 @@
                     </ControlTemplate>
                 </ScrollViewer.Template>
                 
-                <TextBlock x:Name="ContentTextBlock" TextWrapping="Wrap" LineHeight="22"/>
+                <TextBlock x:Name="ContentTextBlock" Margin="0,0,10,0" TextWrapping="Wrap" LineHeight="22"/>
             </ScrollViewer>
         </Border>
     </Grid>

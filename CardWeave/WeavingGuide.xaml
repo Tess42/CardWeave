@@ -7,9 +7,11 @@
         mc:Ignorable="d"
         Title="Weaving Guide"
         Height="600" Width="650"
+        MinHeight="600" MinWidth="500"
         Background="{StaticResource BackgroundColor}"
         KeyDown="Window_KeyDown"
-        Closing="Window_Closing">
+        Closing="Window_Closing"
+        WindowStartupLocation="CenterOwner">
 
     <!-- Main layout -->
     <Grid x:Name="MainGrid" Margin="12" Focusable="True" MouseDown="EmptySpace_MouseDown">

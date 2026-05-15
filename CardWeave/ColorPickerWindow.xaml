@@ -2,9 +2,10 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Color picker" 
-        Width="420" Height="320"
+        Height="320" Width="420"
         ResizeMode="NoResize"
-        Background="#FFFFFF">
+        Background="#FFFFFF"
+        WindowStartupLocation="CenterOwner">
 
     <Grid Margin="15">
         <Grid.RowDefinitions>

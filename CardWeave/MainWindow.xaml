@@ -6,9 +6,11 @@
         mc:Ignorable="d"
         Title="Card Weave"
         Height="660" Width="1000"
+        MinHeight="660" MinWidth="700"
         Background="{StaticResource BackgroundColor}"
         KeyDown="Window_KeyDown"
-        Closing="Window_Closing">
+        Closing="Window_Closing"
+        WindowStartupLocation="CenterScreen">
 
     <!-- Main layout -->
     <Grid x:Name="MainGrid" Margin="12" Focusable="True" MouseDown="EmptySpace_MouseDown">
