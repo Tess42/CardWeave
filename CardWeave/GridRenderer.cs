@@ -361,8 +361,8 @@ namespace CardWeave
         /// </summary>
         private static bool IsHexagonFlipped(Tablet tablet, RotationDirection rotation)
         {
-            return (tablet.Threading == ThreadingDirection.S && rotation == RotationDirection.Forward)
-                || (tablet.Threading == ThreadingDirection.Z && rotation == RotationDirection.Backward);
+            return (tablet.Threading == ThreadingDirection.S && rotation == RotationDirection.Backward)
+                || (tablet.Threading == ThreadingDirection.Z && rotation == RotationDirection.Forward);
         }
 
         /// <summary>
