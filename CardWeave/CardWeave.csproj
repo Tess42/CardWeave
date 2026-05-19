@@ -15,8 +15,17 @@
   <ItemGroup>
     <None Remove="Assets\logo.ico" />
     <None Remove="Patterns\Arrow.json" />
+    <None Remove="Patterns\Birka 22.json" />
+    <None Remove="Patterns\Birka braid.json" />
+    <None Remove="Patterns\Byzantine.json" />
+    <None Remove="Patterns\Chernigov.json" />
     <None Remove="Patterns\Diamond.json" />
+    <None Remove="Patterns\Dublin dragons.json" />
     <None Remove="Patterns\Flames.json" />
+    <None Remove="Patterns\Meander.json" />
+    <None Remove="Patterns\Oseberg 2.json" />
+    <None Remove="Patterns\Oseberg.json" />
+    <None Remove="Patterns\Stary Brzešč.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,10 +36,34 @@
     <Content Include="Patterns\Arrow.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Patterns\Birka braid.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Patterns\Byzantine.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Patterns\Chernigov.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Patterns\Diamond.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Patterns\Dublin dragons.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Patterns\Flames.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Patterns\Meander.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Patterns\Oseberg 2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Patterns\Oseberg.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Patterns\Stary Brzešč.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -39,6 +72,9 @@
     <Resource Include="Assets\logo.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Content Include="Patterns\Birka 22.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Styles.xaml" />
   </ItemGroup>
 

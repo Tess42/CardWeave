@@ -1,0 +1,873 @@
+{
+  "Tablets": [
+    {
+      "ThreadColors": [
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        }
+      ],
+      "ThreadCount": 4,
+      "Threading": 1,
+      "Rotations": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "ThreadColors": [
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        }
+      ],
+      "ThreadCount": 4,
+      "Threading": 1,
+      "Rotations": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "ThreadColors": [
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        }
+      ],
+      "ThreadCount": 4,
+      "Threading": 0,
+      "Rotations": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "ThreadColors": [
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        }
+      ],
+      "ThreadCount": 4,
+      "Threading": 0,
+      "Rotations": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "ThreadColors": [
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        }
+      ],
+      "ThreadCount": 4,
+      "Threading": 0,
+      "Rotations": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "ThreadColors": [
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        }
+      ],
+      "ThreadCount": 4,
+      "Threading": 0,
+      "Rotations": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "ThreadColors": [
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        }
+      ],
+      "ThreadCount": 4,
+      "Threading": 0,
+      "Rotations": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "ThreadColors": [
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        }
+      ],
+      "ThreadCount": 4,
+      "Threading": 0,
+      "Rotations": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "ThreadColors": [
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        }
+      ],
+      "ThreadCount": 4,
+      "Threading": 0,
+      "Rotations": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "ThreadColors": [
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 246,
+          "G": 209,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0.92158186,
+          "ScG": 0.6375969,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        }
+      ],
+      "ThreadCount": 4,
+      "Threading": 0,
+      "Rotations": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "ThreadColors": [
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        }
+      ],
+      "ThreadCount": 4,
+      "Threading": 0,
+      "Rotations": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "ThreadColors": [
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        },
+        {
+          "ColorContext": null,
+          "A": 255,
+          "R": 0,
+          "G": 0,
+          "B": 0,
+          "ScA": 1,
+          "ScR": 0,
+          "ScG": 0,
+          "ScB": 0
+        }
+      ],
+      "ThreadCount": 4,
+      "Threading": 0,
+      "Rotations": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "TabletCount": 12,
+  "RowCount": 20,
+  "ThreadCount": 4,
+  "PatternRepeat": 8,
+  "RowsCompleted": 0
+}
