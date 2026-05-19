@@ -161,7 +161,7 @@ namespace CardWeave
         /// <summary>
         /// Handles global keyboard shortcuts (Undo, Redo, Save).
         /// </summary>
-        private void Window_KeyDown(object sender, KeyEventArgs e)
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (Keyboard.Modifiers == ModifierKeys.Control)
             {

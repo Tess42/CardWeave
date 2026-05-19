@@ -9,7 +9,7 @@
         Height="600" Width="650"
         MinHeight="600" MinWidth="500"
         Background="{StaticResource BackgroundColor}"
-        KeyDown="Window_KeyDown"
+        PreviewKeyDown="Window_PreviewKeyDown"
         Closing="Window_Closing"
         WindowStartupLocation="CenterOwner">
 

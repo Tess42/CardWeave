@@ -15,6 +15,12 @@ namespace CardWeave
         /// <summary> The band being woven. </summary>
         private TabletBand Band { get; set; }
 
+        /// <summary> Unsaved progress in number of rows already woven. </summary>
+        private int RowsCompleted { get; set; }
+
+        /// <summary> Unsaved changes in number of rows after which the pattern repeats. </summary>
+        private int PatternRepeat { get; set; }
+
         /// <summary> Precomputed pattern colors for each row and tablet. </summary>
         private Color[,] PatternColors { get; set; }
 
@@ -31,12 +37,10 @@ namespace CardWeave
             Band = band;
             PatternColors = patternColors;
 
-            if (Band.PatternRepeat == 0)
+            if (Band.PatternRepeat == 0 || Band.PatternRepeat > Band.RowCount)
             {
                 Band.PatternRepeat = Band.RowCount;
             }
-            RepeatComboBox.SelectedItem = Band.PatternRepeat;
-            RowsCompletedTextBox.Text = Band.RowsCompleted.ToString();
 
             Loaded += WeavingGuide_Loaded;
         }
@@ -47,7 +51,14 @@ namespace CardWeave
         private void WeavingGuide_Loaded(object sender, RoutedEventArgs e)
         {
             FillPossibleRepeats();
-            RepeatComboBox.ItemsSource = PossibleRepeats; 
+
+            RepeatComboBox.ItemsSource = PossibleRepeats;
+            RepeatComboBox.SelectedItem = Band.PatternRepeat;
+            RowsCompletedTextBox.Text = Band.RowsCompleted.ToString();
+
+            RowsCompleted = Band.RowsCompleted;
+            PatternRepeat = Band.PatternRepeat;
+
             RedrawVisualization();
         }
 
@@ -78,7 +89,7 @@ namespace CardWeave
             GridRenderer.GenerateTextRow(
                 Band,
                 TurningRow,
-                j => Band.Tablets[j].Rotations[Band.RowsCompleted % Band.PatternRepeat] == RotationDirection.Forward ? "F" : "B",
+                j => Band.Tablets[j].Rotations[RowsCompleted % PatternRepeat] == RotationDirection.Forward ? "F" : "B",
                 true
             );
         }
@@ -89,12 +100,12 @@ namespace CardWeave
         private void GenerateBandPreview()
         {
             int from = 0;
-            if (Band.RowsCompleted > 10)
+            if (RowsCompleted > 10)
             {
-                from = (Band.RowsCompleted + Band.PatternRepeat - 10) % Band.PatternRepeat;
+                from = (RowsCompleted + PatternRepeat - 10) % PatternRepeat;
             }
 
-            int rows = Math.Min(Band.RowsCompleted, 10);
+            int rows = Math.Min(RowsCompleted, 10);
 
             GridRenderer.GenerateGrid(Band, BandPreview, (band, grid, count) => GridRenderer.AddGuideHexagons(band, grid, count, from, PatternColors), rows);
         }
@@ -104,7 +115,7 @@ namespace CardWeave
         /// </summary>
         private void GenerateColorsOnTop()
         {
-            int from = Band.RowsCompleted % Band.PatternRepeat;
+            int from = RowsCompleted % PatternRepeat;
 
             GridRenderer.GenerateGrid(Band, ColorsOnTop, (band, grid, count) => GridRenderer.AddSquares(band, grid, count, from, true), 2);
         }
@@ -146,9 +157,9 @@ namespace CardWeave
         {
             if (RepeatComboBox.SelectedItem is int value)
             {
-                if (value != Band.PatternRepeat)
+                if (value != PatternRepeat)
                 {
-                    Band.PatternRepeat = value;
+                    PatternRepeat = value;
                     RedrawVisualization();
                 }
             }
@@ -159,14 +170,14 @@ namespace CardWeave
         /// </summary>
         private void RowsCompletedTextBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            if (int.TryParse(RowsCompletedTextBox.Text, out int value) && value != Band.RowsCompleted && value >= 0 && value < 100000)
+            if (int.TryParse(RowsCompletedTextBox.Text, out int value) && value != RowsCompleted && value >= 0 && value < 100000)
             {
-                Band.ChangeRowsCompleted(value);
+                RowsCompleted = value;
                 RedrawVisualization();
             }
             else
             {
-                RowsCompletedTextBox.Text = Band.RowsCompleted.ToString();
+                RowsCompletedTextBox.Text = RowsCompleted.ToString();
             }
         }
 
@@ -175,11 +186,11 @@ namespace CardWeave
         /// </summary>
         private void Next_Click(object? sender = null, RoutedEventArgs? e = null)
         {
-            if (Band.PatternRepeat > 0)
+            if (PatternRepeat > 0)
             {
-                Band.ChangeRowsCompleted(Band.RowsCompleted + 1);
+                RowsCompleted++;
                 RedrawVisualization();
-                RowsCompletedTextBox.Text = Band.RowsCompleted.ToString();
+                RowsCompletedTextBox.Text = RowsCompleted.ToString();
             }
         }
 
@@ -188,12 +199,12 @@ namespace CardWeave
         /// </summary>
         private void Previous_Click(object? sender = null, RoutedEventArgs? e = null)
         {
-            if (Band.RowsCompleted > 0)
+            if (PatternRepeat > 0 && RowsCompleted > 0)
             {
-                Band.ChangeRowsCompleted(Band.RowsCompleted - 1);
+                RowsCompleted--;
+                RedrawVisualization();
+                RowsCompletedTextBox.Text = RowsCompleted.ToString();
             }
-            RedrawVisualization();
-            RowsCompletedTextBox.Text = Band.RowsCompleted.ToString();
         }
 
         /// <summary>
@@ -220,7 +231,7 @@ namespace CardWeave
         /// <summary>
         /// Handles keyboard shortcuts: Space/Right for next row, Left for previous row.
         /// </summary>
-        private void Window_KeyDown(object sender, KeyEventArgs e)
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Space || e.Key == Key.Right)
             {
@@ -240,6 +251,11 @@ namespace CardWeave
         /// </summary>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if (Band.RowsCompleted == RowsCompleted && Band.PatternRepeat == PatternRepeat)
+            {
+                return;
+            }
+
             var dialog = new SaveProgressDialog
             {
                 Owner = this
@@ -247,10 +263,10 @@ namespace CardWeave
 
             dialog.ShowDialog();
 
-            if (dialog.Result == MessageBoxResult.No)
+            if (dialog.Result == MessageBoxResult.Yes)
             {
-                Band.RowsCompleted = 0;
-                Band.PatternRepeat = Band.RowCount;
+                Band.ChangeRowsCompleted(RowsCompleted);
+                Band.PatternRepeat = PatternRepeat;
             }
             else if (dialog.Result == MessageBoxResult.Cancel)
             {

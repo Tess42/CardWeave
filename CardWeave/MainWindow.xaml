@@ -8,7 +8,7 @@
         Height="660" Width="1000"
         MinHeight="660" MinWidth="700"
         Background="{StaticResource BackgroundColor}"
-        KeyDown="Window_KeyDown"
+        PreviewKeyDown="Window_PreviewKeyDown"
         Closing="Window_Closing"
         WindowStartupLocation="CenterScreen">
 
