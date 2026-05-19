@@ -153,20 +153,12 @@ namespace CardWeave
         // ───────────────────────────────────────────────
 
         /// <summary>
-        /// Switches visualization setting to opposite and redraws the pattern.
-        /// </summary>
-        private void ChancheVisibility(bool currentValue, Action<bool> setter)
-        {
-            setter(!currentValue);
-            RedrawVisualization();
-        }
-
-        /// <summary>
         /// Switches between front and back side view of the band.
         /// </summary>
         private void BandSide_Click(object sender, RoutedEventArgs e)
         {
-            ChancheVisibility(BackSide, v => BackSide = v);
+            BackSide = !BackSide;
+            GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
         }
 
         /// <summary>
@@ -174,7 +166,8 @@ namespace CardWeave
         /// </summary>
         private void ColumnLabeling_Click(object sender, RoutedEventArgs e)
         {
-            ChancheVisibility(ColumnLabeling, v => ColumnLabeling = v);
+            ColumnLabeling = !ColumnLabeling;
+            GridRenderer.GenerateTextRow(Band, TabletNumberRow, j => (j + 1).ToString(), ColumnLabeling);
         }
 
         /// <summary>
@@ -182,7 +175,8 @@ namespace CardWeave
         /// </summary>
         private void RowLabeling_Click(object sender, RoutedEventArgs e)
         {
-            ChancheVisibility(RowLabeling, v => RowLabeling = v);
+            RowLabeling = !RowLabeling;
+            GridRenderer.GenerateTextColumn(Band, RowNumberGrid, i => (i + 1).ToString(), Band.RowCount, true, RowLabeling);
         }
 
         /// <summary>
@@ -190,7 +184,8 @@ namespace CardWeave
         /// </summary>
         private void HoleLabeling_Click(object sender, RoutedEventArgs e)
         {
-            ChancheVisibility(HoleLabeling, v => HoleLabeling = v);
+            HoleLabeling = !HoleLabeling;
+            GridRenderer.GenerateTextColumn(Band, HoleLabelGrid, i => ((char)('A' + i)).ToString(), Band.ThreadCount, false, HoleLabeling);
         }
 
         /// <summary>
@@ -198,17 +193,9 @@ namespace CardWeave
         /// </summary>
         private void GridHoleLabeling_Click(object sender, RoutedEventArgs e)
         {
-            ChancheVisibility(GridHoleLabeling, v => GridHoleLabeling = v);
-        }
-
-        /// <summary>
-        /// Applies a modification to the band, stores undo state, and redraws the visualization.
-        /// </summary>
-        private void ApplyBandChange(Action<TabletBand> action)
-        {
-            UndoRedoManager.SaveState(Band.Clone());
-            action(Band);
-            RedrawVisualization();
+            GridHoleLabeling = !GridHoleLabeling;
+            GridRenderer.GenerateGrid(Band, ColorPickingGrid, (band, grid, count) => GridRenderer.AddSquares(band, grid, count, 0, GridHoleLabeling, Square_MouseLeftButtonDown, Square_MouseRightButtonDown), Band.ThreadCount);
+            GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
         }
 
         // ───────────────────────────────────────────────
@@ -220,7 +207,10 @@ namespace CardWeave
         /// </summary>
         private void ReverseAllTurning_Click(object sender, RoutedEventArgs e)
         {
-            ApplyBandChange(b => b.ReverseAllTurning());
+            UndoRedoManager.SaveState(Band.Clone());
+            Band.ReverseAllTurning();
+
+            GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
         }
 
         /// <summary>
@@ -228,7 +218,10 @@ namespace CardWeave
         /// </summary>
         private void SetAllToForward_Click(object sender, RoutedEventArgs e)
         {
-            ApplyBandChange(b => b.SetAllRotationTo(RotationDirection.Forward));
+            UndoRedoManager.SaveState(Band.Clone());
+            Band.SetAllRotationTo(RotationDirection.Forward);
+
+            GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
         }
 
         /// <summary>
@@ -236,7 +229,10 @@ namespace CardWeave
         /// </summary>
         private void SetAllToBackward_Click(object sender, RoutedEventArgs e)
         {
-            ApplyBandChange(b => b.SetAllRotationTo(RotationDirection.Backward));
+            UndoRedoManager.SaveState(Band.Clone());
+            Band.SetAllRotationTo(RotationDirection.Backward);
+
+            GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
         }
 
         /// <summary>
@@ -244,7 +240,10 @@ namespace CardWeave
         /// </summary>
         private void AlternateForwardBackward_Click(object sender, RoutedEventArgs e)
         {
-            ApplyBandChange(b => b.AlternateForwardBackward(1));
+            UndoRedoManager.SaveState(Band.Clone());
+            Band.AlternateForwardBackward(1);
+
+            GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
         }
 
         /// <summary>
@@ -252,7 +251,10 @@ namespace CardWeave
         /// </summary>
         private void Alternate2Forward2Backward_Click(object sender, RoutedEventArgs e)
         {
-            ApplyBandChange(b => b.AlternateForwardBackward(2));
+            UndoRedoManager.SaveState(Band.Clone());
+            Band.AlternateForwardBackward(2);
+
+            GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
         }
 
         /// <summary>
@@ -260,7 +262,10 @@ namespace CardWeave
         /// </summary>
         private void Alternate4Forward4Backward_Click(object sender, RoutedEventArgs e)
         {
-            ApplyBandChange(b => b.AlternateForwardBackward(4));
+            UndoRedoManager.SaveState(Band.Clone());
+            Band.AlternateForwardBackward(4);
+
+            GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
         }
 
         // ───────────────────────────────────────────────
@@ -272,7 +277,11 @@ namespace CardWeave
         /// </summary>
         private void ReverseAllThreading_Click(object sender, RoutedEventArgs e)
         {
-            ApplyBandChange(b => b.ReverseAllThreading());
+            UndoRedoManager.SaveState(Band.Clone());
+            Band.ReverseAllThreading();
+
+            GridRenderer.GenerateTextRow(Band, TabletDirectionRow, j => Band.Tablets[j].Threading == ThreadingDirection.S ? "S" : "Z", true, Threading_MouseLeftButtonDown);
+            GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
         }
 
         /// <summary>
@@ -280,7 +289,11 @@ namespace CardWeave
         /// </summary>
         private void SetAllThreadingToS_Click(object sender, RoutedEventArgs e)
         {
-            ApplyBandChange(b => b.SetAllThreadingTo(ThreadingDirection.S));
+            UndoRedoManager.SaveState(Band.Clone());
+            Band.SetAllThreadingTo(ThreadingDirection.S);
+
+            GridRenderer.GenerateTextRow(Band, TabletDirectionRow, j => Band.Tablets[j].Threading == ThreadingDirection.S ? "S" : "Z", true, Threading_MouseLeftButtonDown);
+            GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
         }
 
         /// <summary>
@@ -288,7 +301,11 @@ namespace CardWeave
         /// </summary>
         private void SetAllThreadingToZ_Click(object sender, RoutedEventArgs e)
         {
-            ApplyBandChange(b => b.SetAllThreadingTo(ThreadingDirection.Z));
+            UndoRedoManager.SaveState(Band.Clone());
+            Band.SetAllThreadingTo(ThreadingDirection.Z);
+
+            GridRenderer.GenerateTextRow(Band, TabletDirectionRow, j => Band.Tablets[j].Threading == ThreadingDirection.S ? "S" : "Z", true, Threading_MouseLeftButtonDown);
+            GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
         }
 
         /// <summary>
@@ -296,7 +313,11 @@ namespace CardWeave
         /// </summary>
         private void SetHalvedThreading_Click(object sender, RoutedEventArgs e)
         {
-            ApplyBandChange(b => b.SetHalvedThreading());
+            UndoRedoManager.SaveState(Band.Clone());
+            Band.SetHalvedThreading();
+
+            GridRenderer.GenerateTextRow(Band, TabletDirectionRow, j => Band.Tablets[j].Threading == ThreadingDirection.S ? "S" : "Z", true, Threading_MouseLeftButtonDown);
+            GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
         }
 
         /// <summary>
@@ -304,7 +325,11 @@ namespace CardWeave
         /// </summary>
         private void AlternateSZThreading_Click(object sender, RoutedEventArgs e)
         {
-            ApplyBandChange(b => b.AlternateSZThreading());
+            UndoRedoManager.SaveState(Band.Clone());
+            Band.AlternateSZThreading();
+
+            GridRenderer.GenerateTextRow(Band, TabletDirectionRow, j => Band.Tablets[j].Threading == ThreadingDirection.S ? "S" : "Z", true, Threading_MouseLeftButtonDown);
+            GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
         }
 
         // ───────────────────────────────────────────────
@@ -317,7 +342,7 @@ namespace CardWeave
         private void BackgroundColor_Click(object sender, RoutedEventArgs e)
         {
             BandBackground = CurrentColor;
-            RedrawVisualization();
+            BandVisualizationGrid.Background = new SolidColorBrush(CurrentColor);
         }
 
         /// <summary>
@@ -325,7 +350,12 @@ namespace CardWeave
         /// </summary>
         private void AllToPickedColor_Click(object sender, RoutedEventArgs e)
         {
-            ApplyBandChange(b => ColorManager.SetAllThreadsToColor(b, CurrentColor));
+            UndoRedoManager.SaveState(Band.Clone());
+            ColorManager.SetAllThreadsToColor(Band, CurrentColor);
+
+            GridRenderer.GenerateGrid(Band, ColorPickingGrid, (band, grid, count) => GridRenderer.AddSquares(band, grid, count, 0, GridHoleLabeling, Square_MouseLeftButtonDown, Square_MouseRightButtonDown), Band.ThreadCount);
+            GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
+            GridRenderer.GenerateBandPalette(BandPaletteGrid, ColorManager, FindResource, ColorPaletteSlot_LeftClick, ColorPaletteSlot_RightClick);
         }
 
         /// <summary>
@@ -333,7 +363,12 @@ namespace CardWeave
         /// </summary>
         public void ShuffleBandColors_Click(object sender, RoutedEventArgs e)
         {
-            ApplyBandChange(b => ColorManager.ShuffleBandColors(b));
+            UndoRedoManager.SaveState(Band.Clone()); 
+            ColorManager.ShuffleBandColors(Band);
+
+            GridRenderer.GenerateGrid(Band, ColorPickingGrid, (band, grid, count) => GridRenderer.AddSquares(band, grid, count, 0, GridHoleLabeling, Square_MouseLeftButtonDown, Square_MouseRightButtonDown), Band.ThreadCount);
+            GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
+            GridRenderer.GenerateBandPalette(BandPaletteGrid, ColorManager, FindResource, ColorPaletteSlot_LeftClick, ColorPaletteSlot_RightClick);
         }
 
         // ───────────────────────────────────────────────

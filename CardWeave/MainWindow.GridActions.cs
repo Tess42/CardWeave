@@ -19,7 +19,7 @@ namespace CardWeave
                 int column = Grid.GetColumn(textBlock);
                 Band.Tablets[column].ChangeThreading();
 
-                GridRenderer.GenerateTextRow(Band, TabletDirectionRow, j => Band.Tablets[j].Threading == ThreadingDirection.S ? "S" : "Z", true, Threading_MouseLeftButtonDown);
+                textBlock.Text = Band.Tablets[column].Threading == ThreadingDirection.S ? "S" : "Z";
                 GridRenderer.UpdateHexagonColumn(Band, BandVisualizationGrid, column, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown);
             }
         }
@@ -44,7 +44,6 @@ namespace CardWeave
 
                 Band.Tablets[column].ChangeThreadColor(row, CurrentColor);
 
-                GridRenderer.GenerateGrid(Band, ColorPickingGrid, (band, grid, count) => GridRenderer.AddSquares(band, grid, count, 0, GridHoleLabeling, Square_MouseLeftButtonDown, Square_MouseRightButtonDown), Band.ThreadCount);
                 GridRenderer.GenerateBandPalette(BandPaletteGrid, ColorManager, FindResource, ColorPaletteSlot_LeftClick, ColorPaletteSlot_RightClick);
                 GridRenderer.UpdateHexagonColumn(Band, BandVisualizationGrid, column, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown);
             }
@@ -70,7 +69,6 @@ namespace CardWeave
 
                 Band.Tablets[column].ChangeThreadColor(row, Colors.White);
 
-                GridRenderer.GenerateGrid(Band, ColorPickingGrid, (band, grid, count) => GridRenderer.AddSquares(band, grid, count, 0, GridHoleLabeling, Square_MouseLeftButtonDown, Square_MouseRightButtonDown), Band.ThreadCount);
                 GridRenderer.GenerateBandPalette(BandPaletteGrid, ColorManager, FindResource, ColorPaletteSlot_LeftClick, ColorPaletteSlot_RightClick);
                 GridRenderer.UpdateHexagonColumn(Band, BandVisualizationGrid, column, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown);
             }
