@@ -263,43 +263,72 @@ namespace CardWeave
 
             for (int tabletIndex = 0; tabletIndex < band.TabletCount; tabletIndex++)
             {
-                int threadIndex = 0;
-                var tablet = band.Tablets[tabletIndex];
-                int columnIndex = backSide ? (band.TabletCount - 1 - tabletIndex) : tabletIndex;
+                AddHexagonColumn(band, grid, tabletIndex, backSide, holeLabel, clickHandler);
+            }
+        }
 
-                for (int row = 0; row < band.RowCount; row++)
+        /// <summary>
+        /// Updates only a single hexagon column (tablet) in an existing grid.
+        /// More efficient than regenerating the entire grid when only one tablet changes.
+        /// </summary>
+        public static void UpdateHexagonColumn(TabletBand band, Grid grid, int tabletIndex, bool backSide, bool holeLabel, MouseButtonEventHandler clickHandler)
+        {
+            int columnIndex = backSide ? (band.TabletCount - 1 - tabletIndex) : tabletIndex;
+
+            var childrenToRemove = grid.Children.Cast<UIElement>()
+                .Where(child => Grid.GetColumn(child) == columnIndex)
+                .ToList();
+
+            foreach (var child in childrenToRemove)
+            {
+                grid.Children.Remove(child);
+            }
+
+            AddHexagonColumn(band, grid, tabletIndex, backSide, holeLabel, clickHandler);
+        }
+
+        /// <summary>
+        /// Adds a single hexagon column for the specified tablet index to the grid.
+        /// Used by both AddHexagons and UpdateHexagonColumn to avoid code duplication.
+        /// </summary>
+        private static void AddHexagonColumn(TabletBand band, Grid grid, int tabletIndex, bool backSide, bool holeLabel, MouseButtonEventHandler clickHandler)
+        {
+            int threadIndex = 0;
+            var tablet = band.Tablets[tabletIndex];
+            int columnIndex = backSide ? (band.TabletCount - 1 - tabletIndex) : tabletIndex;
+
+            for (int row = 0; row < band.RowCount; row++)
+            {
+                var rotation = tablet.Rotations[row];
+
+                if (rotation == RotationDirection.Backward)
                 {
-                    var rotation = tablet.Rotations[row];
+                    threadIndex = (band.ThreadCount + threadIndex - 1) % band.ThreadCount;
+                }
 
-                    if (rotation == RotationDirection.Backward)
-                    {
-                        threadIndex = (band.ThreadCount + threadIndex - 1) % band.ThreadCount;
-                    }
-
-                    var fillColor = backSide
+                var fillColor = backSide
                         ? tablet.ThreadColors[(threadIndex + tablet.ThreadCount / 2) % tablet.ThreadCount]
                         : tablet.ThreadColors[threadIndex];
 
-                    var hexagon = CreateHexagon(tablet, tabletIndex, fillColor, rotation, clickHandler);
+                var hexagon = CreateHexagon(tablet, tabletIndex, fillColor, rotation, clickHandler);
 
-                    Grid.SetRow(hexagon, row);
-                    Grid.SetColumn(hexagon, columnIndex);
+                Grid.SetRow(hexagon, row);
+                Grid.SetColumn(hexagon, columnIndex);
 
-                    grid.Children.Add(hexagon);
+                grid.Children.Add(hexagon);
 
-                    if (holeLabel)
-                    {
-                        var label = CreateHoleLabel(threadIndex, fillColor);
+                if (holeLabel)
+                {
+                    var label = CreateHoleLabel(threadIndex, fillColor);
 
-                        Grid.SetRow(label, row);
-                        Grid.SetColumn(label, columnIndex);
-                        grid.Children.Add(label);
-                    }
+                    Grid.SetRow(label, row);
+                    Grid.SetColumn(label, columnIndex);
+                    grid.Children.Add(label);
+                }
 
-                    if (rotation == RotationDirection.Forward)
-                    {
-                        threadIndex = (threadIndex + 1) % band.ThreadCount;
-                    }
+                if (rotation == RotationDirection.Forward)
+                {
+                    threadIndex = (threadIndex + 1) % band.ThreadCount;
                 }
             }
         }

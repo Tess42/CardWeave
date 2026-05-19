@@ -20,7 +20,7 @@ namespace CardWeave
                 Band.Tablets[column].ChangeThreading();
 
                 GridRenderer.GenerateTextRow(Band, TabletDirectionRow, j => Band.Tablets[j].Threading == ThreadingDirection.S ? "S" : "Z", true, Threading_MouseLeftButtonDown);
-                GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
+                GridRenderer.UpdateHexagonColumn(Band, BandVisualizationGrid, column, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown);
             }
         }
 
@@ -46,7 +46,7 @@ namespace CardWeave
 
                 GridRenderer.GenerateGrid(Band, ColorPickingGrid, (band, grid, count) => GridRenderer.AddSquares(band, grid, count, 0, GridHoleLabeling, Square_MouseLeftButtonDown, Square_MouseRightButtonDown), Band.ThreadCount);
                 GridRenderer.GenerateBandPalette(BandPaletteGrid, ColorManager, FindResource, ColorPaletteSlot_LeftClick, ColorPaletteSlot_RightClick);
-                GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
+                GridRenderer.UpdateHexagonColumn(Band, BandVisualizationGrid, column, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown);
             }
         }
 
@@ -72,7 +72,7 @@ namespace CardWeave
 
                 GridRenderer.GenerateGrid(Band, ColorPickingGrid, (band, grid, count) => GridRenderer.AddSquares(band, grid, count, 0, GridHoleLabeling, Square_MouseLeftButtonDown, Square_MouseRightButtonDown), Band.ThreadCount);
                 GridRenderer.GenerateBandPalette(BandPaletteGrid, ColorManager, FindResource, ColorPaletteSlot_LeftClick, ColorPaletteSlot_RightClick);
-                GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling,Hexagon_MouseLeftButtonDown), Band.RowCount);
+                GridRenderer.UpdateHexagonColumn(Band, BandVisualizationGrid, column, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown);
             }
         }
 
@@ -97,7 +97,7 @@ namespace CardWeave
                     Band.Tablets[column].Rotations[row] = RotationDirection.Forward;
                 }
 
-                GridRenderer.GenerateGrid(Band, BandVisualizationGrid, (band, grid, _) => GridRenderer.AddHexagons(band, grid, BandBackground, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown), Band.RowCount);
+                GridRenderer.UpdateHexagonColumn(Band, BandVisualizationGrid, column, BackSide, GridHoleLabeling, Hexagon_MouseLeftButtonDown);
             }
         }
 
