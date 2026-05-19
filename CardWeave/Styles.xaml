@@ -143,6 +143,125 @@
         </Setter>
     </Style>
 
+    <!-- Tool Tip -->
+    <Style TargetType="ToolTip" x:Key="ColorSlotTooltip">
+        <Setter Property="Background" Value="{StaticResource ToolbarHoverColor}"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="Placement" Value="Top"/>
+        <Setter Property="HorizontalOffset" Value="0"/>
+        <Setter Property="VerticalOffset" Value="-4"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToolTip">
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="5"
+                            Padding="{TemplateBinding Padding}">
+                        <TextBlock Text="{TemplateBinding Content}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Button -->
+    <Style x:Key="Button" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="8,4"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="5"
+                    Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource ToolbarHoverColor}"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource BoxBorderColor}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource ToolbarHoverColor}"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource BoxBorderColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Thumb -->
+    <Style x:Key="Thumb" TargetType="Thumb">
+        <Setter Property="Background" Value="{StaticResource BorderColor}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Thumb">
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="5"
+                            SnapsToDevicePixels="True"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource BoxBorderColor}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- ScrollBar -->
+    <Style x:Key="ScrollBar" TargetType="ScrollBar">
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Vertical">
+                <Setter Property="MinWidth" Value="0"/>
+                <Setter Property="Width" Value="10"/>
+            </Trigger>
+
+            <Trigger Property="Orientation" Value="Horizontal">
+                <Setter Property="MinHeight" Value="0"/>
+                <Setter Property="Height" Value="10"/>
+            </Trigger>
+        </Style.Triggers>
+        <Setter Property="Padding" Value="0"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ScrollBar">
+                    <Border Background="{StaticResource BackgroundColor}" CornerRadius="5">
+                        <Track x:Name="PART_Track"
+                               Orientation="{TemplateBinding Orientation}"
+                               Minimum="{TemplateBinding Minimum}"
+                               Maximum="{TemplateBinding Maximum}"
+                               Value="{TemplateBinding Value}"
+                               ViewportSize="{TemplateBinding ViewportSize}">
+                            <Track.Thumb>
+                                <Thumb Style="{StaticResource Thumb}"/>
+                            </Track.Thumb>
+                        </Track>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Orientation" Value="Vertical">
+                            <Setter TargetName="PART_Track" Property="IsDirectionReversed" Value="True"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <!-- ComboBoxToggleButton -->
     <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
         <Border Focusable="False"
@@ -217,8 +336,12 @@
                             <Border Background="{StaticResource CardBackground}"
                                     BorderBrush="{StaticResource BoxBorderColor}"
                                     BorderThickness="1"
-                                    CornerRadius="2">
-                                <ScrollViewer>
+                                    CornerRadius="5">
+                                <ScrollViewer MaxHeight="200" CanContentScroll="False">
+                                    <ScrollViewer.Resources>
+                                        <Style TargetType="ScrollBar" BasedOn="{StaticResource ScrollBar}"/>
+                                    </ScrollViewer.Resources>
+
                                     <ItemsPresenter/>
                                 </ScrollViewer>
                             </Border>
@@ -228,125 +351,6 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="BorderBrush" Value="{StaticResource BoxBorderColor}"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <!-- Tool Tip -->
-    <Style TargetType="ToolTip" x:Key="ColorSlotTooltip">
-        <Setter Property="Background" Value="{StaticResource ToolbarHoverColor}"/>
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="Padding" Value="4"/>
-        <Setter Property="Placement" Value="Top"/>
-        <Setter Property="HorizontalOffset" Value="0"/>
-        <Setter Property="VerticalOffset" Value="-4"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="ToolTip">
-                    <Border Background="{TemplateBinding Background}"
-                            CornerRadius="5"
-                            Padding="{TemplateBinding Padding}">
-                        <TextBlock Text="{TemplateBinding Content}"
-                                   Foreground="{TemplateBinding Foreground}"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <!-- Button -->
-    <Style x:Key="Button" TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Padding" Value="8,4"/>
-
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border x:Name="border"
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="5"
-                    Padding="{TemplateBinding Padding}">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
-
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource ToolbarHoverColor}"/>
-                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource BoxBorderColor}"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource ToolbarHoverColor}"/>
-                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource BoxBorderColor}"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <!-- Thumb -->
-    <Style x:Key="Thumb" TargetType="Thumb">
-        <Setter Property="Background" Value="{StaticResource BorderColor}"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Thumb">
-                    <Border Background="{TemplateBinding Background}"
-            CornerRadius="5"
-            SnapsToDevicePixels="True"/>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{StaticResource BoxBorderColor}"/>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
-    <!-- ScrollBar -->
-    <Style x:Key="ScrollBar" TargetType="ScrollBar">
-        <Style.Triggers>
-            <Trigger Property="Orientation" Value="Vertical">
-                <Setter Property="MinWidth" Value="0"/>
-                <Setter Property="Width" Value="10"/>
-            </Trigger>
-
-            <Trigger Property="Orientation" Value="Horizontal">
-                <Setter Property="MinHeight" Value="0"/>
-                <Setter Property="Height" Value="10"/>
-            </Trigger>
-        </Style.Triggers>
-        <Setter Property="Padding" Value="0"/>
-
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="ScrollBar">
-                    <Border Background="{StaticResource BackgroundColor}" CornerRadius="5">
-                        <Track x:Name="PART_Track"
-                   Orientation="{TemplateBinding Orientation}"
-                   Minimum="{TemplateBinding Minimum}"
-                   Maximum="{TemplateBinding Maximum}"
-                   Value="{TemplateBinding Value}"
-                   ViewportSize="{TemplateBinding ViewportSize}">
-                            <Track.Thumb>
-                                <Thumb Style="{StaticResource Thumb}"/>
-                            </Track.Thumb>
-                        </Track>
-                    </Border>
-
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="Orientation" Value="Vertical">
-                            <Setter TargetName="PART_Track" Property="IsDirectionReversed" Value="True"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

@@ -21,52 +21,58 @@
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0" Style="{StaticResource Card}">
-            <ScrollViewer x:Name="GuideScrollViewer" 
-                          Margin="0"
-                          PanningMode="None"
-                          VerticalScrollBarVisibility="Disabled" 
-                          HorizontalScrollBarVisibility="Auto"> 
-                <ScrollViewer.Template>
-                    <ControlTemplate TargetType="ScrollViewer">
-                        <Grid>
-                            <ScrollContentPresenter/>
+            <Grid>
+                <ScrollViewer x:Name="GuideScrollViewer"
+                              Margin="0"
+                              PanningMode="None"
+                              VerticalScrollBarVisibility="Disabled" 
+                              HorizontalScrollBarVisibility="Auto">
+                    <ScrollViewer.Template>
+                        <ControlTemplate TargetType="ScrollViewer">
+                            <Grid>
+                                <ScrollContentPresenter/>
 
-                            <ScrollBar x:Name="PART_HorizontalScrollBar"
-                                       Style="{StaticResource ScrollBar}"
-                                       Orientation="Horizontal"
-                                       VerticalAlignment="Bottom"
-                                       Maximum="{TemplateBinding ScrollableWidth}"
-                                       ViewportSize="{TemplateBinding ViewportWidth}"
-                                       Value="{TemplateBinding HorizontalOffset}"
-                                       Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/>
-                        </Grid>
-                    </ControlTemplate>
-                </ScrollViewer.Template>
+                                <ScrollBar x:Name="PART_HorizontalScrollBar"
+                                           Style="{StaticResource ScrollBar}"
+                                           Orientation="Horizontal"
+                                           VerticalAlignment="Bottom"
+                                           Maximum="{TemplateBinding ScrollableWidth}"
+                                           ViewportSize="{TemplateBinding ViewportWidth}"
+                                           Value="{TemplateBinding HorizontalOffset}"
+                                           Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </ScrollViewer.Template>
 
-                <Grid x:Name="PatternVisualization" Background="White">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                    <Grid x:Name="PatternVisualization" Background="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                    <Grid Name="TabletNumberRow" Grid.Row="0"/>
+                        <Grid Name="TabletNumberRow" Grid.Row="0"/>
 
-                    <Grid Name="TurningRow" Grid.Row="1" Margin="0,0,0,10"/>
+                        <Grid Name="TurningRow" Grid.Row="1" Margin="0,0,0,10"/>
 
-                    <TextBlock Text="Hole labels and colors on top" Grid.Row="2" FontWeight="Normal" Margin="0,0,0,10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="" Grid.Row="2" Margin="0,0,0,10"/>
 
-                    <Grid Name="ColorsOnTop" Grid.Row="3" Margin="0,0,0,10"/>
+                        <Grid Name="ColorsOnTop" Grid.Row="3" Margin="0,0,0,10"/>
 
-                    <TextBlock Text="Last rows of the band" Grid.Row="4" FontWeight="Normal" Margin="0,0,0,10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="" Grid.Row="4" Margin="0,0,0,10"/>
 
-                    <Grid Name="BandPreview" Grid.Row="5"/>
-                </Grid>
-            </ScrollViewer>
+                        <Grid Name="BandPreview" Grid.Row="5"/>
+                    </Grid>
+                </ScrollViewer>
+
+                <TextBlock Text="Hole labels and colors on top" FontWeight="Normal" Margin="0,50,0,0" HorizontalAlignment="Center" IsHitTestVisible="False"/>
+
+                <TextBlock Text="Last rows of the band" FontWeight="Normal" Margin="0,130,0,0" HorizontalAlignment="Center" IsHitTestVisible="False"/>
+            </Grid>
         </Border>
 
         <Grid Grid.Row="1">
