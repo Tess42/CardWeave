@@ -19,3 +19,7 @@ A WPF desktop application for designing and visualizing tablet weaving patterns.
 1. Download the repository
 2. Open `CardWeave.sln` in Visual Studio
 3. Click Run to start the application
+
+## Repository
+
+[View on GitHub](https://github.com/Tess42/CardWeave)
