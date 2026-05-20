@@ -25,7 +25,6 @@
     <None Remove="Patterns\Meander.json" />
     <None Remove="Patterns\Oseberg 2.json" />
     <None Remove="Patterns\Oseberg.json" />
-    <None Remove="Patterns\Stary Brzešč.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -63,7 +62,7 @@
     <Content Include="Patterns\Oseberg.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Patterns\Stary Brzešč.json">
+    <Content Include="Patterns\Stary Brześć.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
