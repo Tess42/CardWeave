@@ -107,7 +107,7 @@ namespace CardWeave
 
             int rows = Math.Min(RowsCompleted, 10);
 
-            GridRenderer.GenerateGrid(Band, BandPreview, (band, grid, count) => GridRenderer.AddGuideHexagons(band, grid, count, from, PatternColors), rows);
+            GridRenderer.GenerateGrid(Band, BandPreview, (band, grid, count) => GridRenderer.AddGuideHexagons(band, grid, count, from, PatternColors, PatternRepeat), rows);
         }
 
         /// <summary>

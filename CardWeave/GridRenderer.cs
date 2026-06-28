@@ -336,7 +336,7 @@ namespace CardWeave
         /// <summary>
         /// Generates a grid showing band preview of last 10 completed rows in guide.
         /// </summary>
-        public static void AddGuideHexagons(TabletBand band, Grid grid, int count, int from, Color[,] patternColors)
+        public static void AddGuideHexagons(TabletBand band, Grid grid, int count, int from, Color[,] patternColors, int patternRepeat)
         {
             for (int tabletIndex = 0; tabletIndex < band.TabletCount; tabletIndex++)
             {
@@ -344,8 +344,8 @@ namespace CardWeave
 
                 for (int row = 0; row < count; row++)
                 {
-                    var rotation = tablet.Rotations[(from + row) % band.PatternRepeat];
-                    var fillColor = patternColors[(from + row) % band.PatternRepeat, tabletIndex];
+                    var rotation = tablet.Rotations[(from + row) % patternRepeat];
+                    var fillColor = patternColors[(from + row) % patternRepeat, tabletIndex];
 
                     var hexagon = CreateHexagon(tablet, tabletIndex, fillColor, rotation);
 
