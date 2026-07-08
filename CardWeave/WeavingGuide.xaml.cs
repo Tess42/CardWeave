@@ -37,11 +37,6 @@ namespace CardWeave
             Band = band;
             PatternColors = patternColors;
 
-            if (Band.PatternRepeat == 0 || Band.PatternRepeat > Band.RowCount)
-            {
-                Band.PatternRepeat = Band.RowCount;
-            }
-
             Loaded += WeavingGuide_Loaded;
         }
 
@@ -53,7 +48,12 @@ namespace CardWeave
             FillPossibleRepeats();
 
             RepeatComboBox.ItemsSource = PossibleRepeats;
+            if (Band.PatternRepeat == 0 || Band.PatternRepeat > Band.RowCount || !PossibleRepeats.Contains(Band.PatternRepeat))
+            {
+                Band.PatternRepeat = Band.RowCount;
+            }
             RepeatComboBox.SelectedItem = Band.PatternRepeat;
+
             RowsCompletedTextBox.Text = Band.RowsCompleted.ToString();
 
             RowsCompleted = Band.RowsCompleted;
