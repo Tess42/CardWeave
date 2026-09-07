@@ -2,6 +2,8 @@
 
 A WPF desktop application for designing and visualizing tablet weaving patterns.
 
+[![Download CardWeave](https://img.shields.io/badge/Download-CardWeave-blue?style=for-the-badge&logo=windows)](https://github.com/Tess42/CardWeave/releases/latest/download/CardWeave-Setup.exe)
+
 ## Features
 
 - Design and edit tablet weaving patterns interactively
