@@ -10,6 +10,9 @@
 	<LangVersion>latest</LangVersion>
 	<PlatformTarget>AnyCPU</PlatformTarget>
 	<ApplicationIcon>Assets\logo.ico</ApplicationIcon>
+
+	<ApplicationVersion>1.0.0</ApplicationVersion>
+	<ApplicationRevision>0</ApplicationRevision>
   </PropertyGroup>
 
   <ItemGroup>
